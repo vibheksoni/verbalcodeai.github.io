@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="VerbalCodeAI: A free, open-source AI code assistant to navigate and understand codebases in your terminal. Download now!">
+    <meta name="keywords"
+        content="VerbalCodeAI, AI coding tool, codebase navigation, open-source, programming, developer tools">
+    <title>VerbalCodeAI - Your AI Coding Companion</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">VerbalCodeAI</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="#getting-started">Getting Started</a>
+                <a href="#configuration">Configuration</a>
+                <a href="https://github.com/vibheksoni/VerbalCodeAi" target="_blank" class="btn">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1>VerbalCodeAI</h1>
+                <p class="tagline">Understand Your Code. Instantly.</p>
+                <div class="badges">
+                    <a href="https://github.com/vibheksoni/VerbalCodeAi/stargazers" target="_blank"><img
+                            src="https://img.shields.io/github/stars/vibheksoni/VerbalCodeAi?style=social"
+                            alt="GitHub stars"></a>
+                    <a href="https://github.com/vibheksoni/VerbalCodeAi/network/members" target="_blank"><img
+                            src="https://img.shields.io/github/forks/vibheksoni/VerbalCodeAi?style=social"
+                            alt="GitHub forks"></a>
+                    <a href="https://github.com/vibheksoni/VerbalCodeAi/issues" target="_blank"><img
+                            src="https://img.shields.io/github/issues/vibheksoni/VerbalCodeAi" alt="GitHub issues"></a>
+                    <a href="https://github.com/vibheksoni/VerbalCodeAi/blob/master/LICENSE" target="_blank"><img
+                            src="https://img.shields.io/github/license/vibheksoni/VerbalCodeAi" alt="GitHub license"></a>
+                    <a href="https://www.python.org/downloads/release/python-3116/" target="_blank"><img
+                            src="https://img.shields.io/badge/python-3.11.6-blue" alt="Python Version"></a>
+                    <a href="https://verbalcode.xyz" target="_blank"><img
+                            src="https://img.shields.io/badge/website-verbalcode.xyz-brightgreen" alt="Website"></a>
+                </div>
+                <div class="ascii-art">
+_   _ _______  ______ ______  _______             _______  _____  ______  _______      _______ _____
+\  /  |______ |_____/ |_____] |_____| |           |       |     | |     \ |______      |_____|   |  
+ \/   |______ |    \_ |_____] |     | |_____      |_____  |_____| |_____/ |______      |     | __|__
+    
+        [AI Assistant for Code]
+                </div>
+                <p class="description">
+                    A powerful AI-powered code assistant that helps you understand, navigate, and work with codebases
+                    more efficiently.
+                    VerbalCodeAI uses advanced embedding techniques and LLM integration to provide intelligent code
+                    analysis and assistance directly in your terminal.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/vibheksoni/VerbalCodeAi" target="_blank" class="btn primary">Get Started
+                        (It's Free!)</a>
+                    <a href="#features" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features">
+        <div class="container">
+            <h2>✨ Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🔍 Intelligent Code Search</h3>
+                    <p>Find relevant code snippets using natural language queries</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Code Analysis</h3>
+                    <p>Get insights about your codebase structure and dependencies</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 Agent Mode</h3>
+                    <p>Let the AI explore and understand your codebase using various tools</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💬 Chat with AI</h3>
+                    <p>Ask questions about your code and get detailed explanations</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌐 Web Search Integration</h3>
+                    <p>Search the web for code-related information without leaving the terminal</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧠 Memory System</h3>
+                    <p>The AI remembers important information about your project</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔄 Version Control Integration</h3>
+                    <p>Analyze git history and changes</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📝 File Description</h3>
+                    <p>Generate concise descriptions of code files</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🛠️ Command Runner</h3>
+                    <p>Execute system commands with AI assistance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2>🔍 How it Works</h2>
+
+            <div class="process-overview">
+                <h3>The Indexing Process</h3>
+                <p>When you first use VerbalCodeAI, it indexes your codebase to create searchable resources:</p>
+
+                <div class="index-folders">
+                    <div class="folder-item">
+                        <h4><code>.index/descriptions</code></h4>
+                        <p>Generates a txt file for each file containing a short description of the file</p>
+                    </div>
+                    <div class="folder-item">
+                        <h4><code>.index/embeddings</code></h4>
+                        <p>Generates a json file for each file containing the code chunk and embeddings</p>
+                    </div>
+                    <div class="folder-item">
+                        <h4><code>.index/metadata</code></h4>
+                        <p>Generates a json file for each file containing hash of file, line numbers, etc.</p>
+                    </div>
+                    <div class="folder-item">
+                        <h4><code>.index/project_description.json</code></h4>
+                        <p>Has a description of the project name, tech stack, and a summary of it</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-modes">
+                <h3>Chat Modes</h3>
+                <p>VerbalCodeAI offers three powerful ways to interact with your code:</p>
+
+                <div class="mode-grid">
+                    <div class="mode-card">
+                        <h4>💬 Chat with AI</h4>
+                        <ol>
+                            <li>You type a question about your code.</li>
+                            <li>The AI searches for relevant files and project info.</li>
+                            <li>It uses its memory to recall past conversations and context.</li>
+                            <li>The AI generates a direct, conversational answer, referencing code, files, or project
+                                details as needed.</li>
+                            <li>You can continue the conversation or ask follow-up questions.</li>
+                        </ol>
+                    </div>
+
+                    <div class="mode-card">
+                        <h4>🚀 Max Chat Mode</h4>
+                        <ol>
+                            <li>You ask a question (like in Chat with AI).</li>
+                            <li>The AI finds the most relevant files for your question.</li>
+                            <li>It sends the full content of those files to the AI model, giving the AI maximum
+                                context.</li>
+                            <li>The AI generates a highly detailed, context-rich answer, useful for complex questions,
+                                code reviews, or debugging.</li>
+                            <li>You get a thorough response, with all relevant code considered.</li>
+                        </ol>
+                    </div>
+
+                    <div class="mode-card full-width">
+                        <h4>🤖 Agent Mode</h4>
+                        <div class="agent-mode-container">
+                            <div class="agent-diagram">
+                                <div class="diagram-item step-1">
+                                    <div class="diagram-icon">🧠</div>
+                                    <div class="diagram-content">
+                                        <h5>Plan</h5>
+                                        <p>Understand your request and decide which tools to use</p>
+                                    </div>
+                                </div>
+                                <div class="diagram-arrow">→</div>
+                                <div class="diagram-item step-2">
+                                    <div class="diagram-icon">🔍</div>
+                                    <div class="diagram-content">
+                                        <h5>Explore</h5>
+                                        <p>Use specialized tools to search, read, and analyze your code</p>
+                                    </div>
+                                </div>
+                                <div class="diagram-arrow">→</div>
+                                <div class="diagram-item step-3">
+                                    <div class="diagram-icon">💡</div>
+                                    <div class="diagram-content">
+                                        <h5>Explain</h5>
+                                        <p>Synthesize findings into clear, actionable answers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agent-description">
+                                <p>The Agent Mode allows you to interact with your codebase using a powerful AI agent
+                                    that uses specialized tools to explore, search, and understand your code.</p>
+                                <p>With Agent Mode, you can:</p>
+                                <ul>
+                                    <li>Instantly find code snippets, functions, or classes</li>
+                                    <li>Get explanations for complex code</li>
+                                    <li>Analyze dependencies and project structure</li>
+                                    <li>Search version history and more</li>
+                                </ul>
+                                <p>No manual searching—just ask, and let the AI do the heavy lifting!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="getting-started">
+        <div class="container">
+            <h2>🚀 Getting Started</h2>
+
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Python 3.11.6 (tested and recommended version)</li>
+                <li><a href="https://ollama.com/download" target="_blank">Ollama</a> (for local model execution)</li>
+            </ul>
+
+            <div class="note">
+                <strong>Note:</strong> The application has been specifically tested with Python 3.11.6 on Windows.
+                While it may work with other versions, for the best experience, we recommend using the tested
+                version.
+            </div>
+
+            <h3>Installation</h3>
+
+            <h4>Windows</h4>
+            <div class="code-block">
+                <pre><code>git clone https://github.com/vibheksoni/VerbalCodeAi.git
+cd VerbalCodeAi
+setup_windows.bat</code></pre>
+            </div>
+
+            <h4>Linux/macOS</h4>
+            <div class="code-block">
+                <pre><code>git clone https://github.com/vibheksoni/VerbalCodeAi.git
+cd VerbalCodeAi
+chmod +x setup_linux.sh
+./setup_linux.sh</code></pre>
+            </div>
+
+            <h3>Manual Installation</h3>
+            <p>If you prefer to set up manually:</p>
+            <ol>
+                <li>
+                    Create a virtual environment:
+                    <div class="code-block">
+                        <pre><code>python -m venv venv</code></pre>
+                    </div>
+                </li>
+                <li>
+                    Activate the virtual environment:
+                    <ul>
+                        <li>Windows: <code>venv\Scripts\activate</code></li>
+                        <li>Linux/macOS: <code>source venv/bin/activate</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Install dependencies:
+                    <div class="code-block">
+                        <pre><code>pip install -r requirements.txt</code></pre>
+                    </div>
+                </li>
+                <li>Create a <code>.env</code> file with your configuration (see <code>.env.example</code> for
+                        reference)</li>
+            </ol>
+
+            <h3>Usage</h3>
+
+            <h4>Starting the Application</h4>
+            <p>After installation, activate your virtual environment and run:</p>
+            <div class="code-block">
+                <pre><code>python app.py</code></pre>
+            </div>
+
+            <h4>Indexing a Project</h4>
+            <p>When you first start VerbalCodeAI, you'll be prompted to select a directory to index. This process
+                analyzes your codebase and creates embeddings for efficient searching.</p>
+
+            <h4>Main Menu Options</h4>
+            <ul>
+                <li><strong>Chat with AI</strong>: Ask questions about your code</li>
+                <li><strong>Agent Mode</strong>: Use AI with tools to explore your codebase</li>
+                <li><strong>Reindex Project</strong>: Update the index after code changes</li>
+                <li><strong>Project Info</strong>: View information about the indexed project</li>
+                <li><strong>Settings</strong>: Configure application settings</li>
+                <li><strong>Exit</strong>: Quit the application</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="agent-tools">
+        <div class="container">
+            <h2>Agent Mode Tools</h2>
+            <p>Agent Mode provides access to powerful tools:</p>
+
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h3>Search Tools</h3>
+                    <ul>
+                        <li><code>embed_search</code></li>
+                        <li><code>semantic_search</code></li>
+                        <li><code>grep</code></li>
+                        <li><code>regex_advanced_search</code></li>
+                        <li><code>file_type_search</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>File Tools</h3>
+                    <ul>
+                        <li><code>read_file</code></li>
+                        <li><code>file_stats</code></li>
+                        <li><code>directory_tree</code></li>
+                        <li><code>get_file_description</code></li>
+                        <li><code>get_file_metadata</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>Code Analysis</h3>
+                    <ul>
+                        <li><code>find_functions</code></li>
+                        <li><code>find_classes</code></li>
+                        <li><code>find_usage</code></li>
+                        <li><code>cross_reference</code></li>
+                        <li><code>code_analysis</code></li>
+                        <li><code>get_functions</code></li>
+                        <li><code>get_classes</code></li>
+                        <li><code>get_variables</code></li>
+                        <li><code>get_imports</code></li>
+                        <li><code>explain_code</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>Version Control</h3>
+                    <ul>
+                        <li><code>git_history</code></li>
+                        <li><code>version_control_search</code></li>
+                        <li><code>search_imports</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>Project Tools</h3>
+                    <ul>
+                        <li><code>get_project_description</code></li>
+                        <li><code>get_instructions</code></li>
+                        <li><code>create_instructions_template</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>Memory Tools</h3>
+                    <ul>
+                        <li><code>add_memory</code></li>
+                        <li><code>get_memories</code></li>
+                        <li><code>search_memories</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>System Tools</h3>
+                    <ul>
+                        <li><code>run_command</code></li>
+                        <li><code>read_terminal</code></li>
+                        <li><code>kill_terminal</code></li>
+                        <li><code>list_terminals</code></li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>Helper Tools</h3>
+                    <ul>
+                        <li><code>ask_buddy</code> (with context-aware second opinions)</li>
+                    </ul>
+                </div>
+
+                <div class="tool-category">
+                    <h3>Web Tools</h3>
+                    <ul>
+                        <li><code>google_search</code></li>
+                        <li><code>ddg_search</code></li>
+                        <li><code>bing_news_search</code></li>
+                        <li><code>fetch_webpage</code></li>
+                        <li><code>get_base_knowledge</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="configuration">
+        <div class="container">
+            <h2>⚙️ Configuration</h2>
+            <p>VerbalCodeAI can be configured through the <code>.env</code> file:</p>
+
+            <div class="code-block">
+                <pre><code># Provider can be: ollama, google, openai, or openrouter
+AI_CHAT_PROVIDER=ollama
+AI_EMBEDDING_PROVIDER=ollama
+AI_DESCRIPTION_PROVIDER=ollama
+
+# API Keys for each provider (only needed if using that provider)
+AI_CHAT_API_KEY=None
+AI_EMBEDDING_API_KEY=None
+AI_DESCRIPTION_API_KEY=None
+
+# Model names for each provider
+# For ollama: llama2, codellama, mistral, etc.
+# For OpenAI: gpt-4, gpt-3.5-turbo, text-embedding-ada-002
+# For OpenRouter: anthropic/claude-3-opus, openai/gpt-4-turbo, google/gemini-pro, etc.
+# For Google: gemini-pro, gemini-pro-vision
+CHAT_MODEL=llama2
+EMBEDDING_MODEL=all-minilm:33m
+DESCRIPTION_MODEL=llama2
+
+# Performance settings (LOW, MEDIUM, MAX)
+PERFORMANCE_MODE=MEDIUM
+
+# UI Settings
+ENABLE_MARKDOWN_RENDERING=TRUE
+SHOW_THINKING_BLOCKS=FALSE
+ENABLE_STREAMING_MODE=FALSE
+CHAT_LOGS=FALSE
+MEMORY_ENABLED=TRUE
+MAX_MEMORY_ITEMS=10
+COMMANDS_YOLO=FALSE</code></pre>
+            </div>
+
+            <h3>Supported LLM Providers</h3>
+            <ul>
+                <li><strong>Ollama</strong>: Local models (default)</li>
+                <li><strong>Google AI</strong>: Cloud-based models (requires API key)</li>
+                <li><strong>OpenAI</strong>: OpenAI models (requires API key)</li>
+                <li><strong>OpenRouter</strong>: Various cloud models (requires API key)</li>
+            </ul>
+
+            <h3>Performance Settings</h3>
+            <ul>
+                <li><strong>LOW</strong>: Minimal resource usage, suitable for low-end systems</li>
+                <li><strong>MEDIUM</strong>: Balanced resource usage, suitable for most systems</li>
+                <li><strong>MAX</strong>: Maximum resource usage, suitable for high-end systems</li>
+            </ul>
+
+            <h3>UI Settings</h3>
+            <ul>
+                <li><strong>ENABLE_MARKDOWN_RENDERING</strong>: Enable/disable markdown rendering in responses</li>
+                <li><strong>SHOW_THINKING_BLOCKS</strong>: Show AI's thinking process in responses</li>
+                <li><strong>ENABLE_STREAMING_MODE</strong>: Enable streaming responses (may be slower)</li>
+                <li><strong>CHAT_LOGS</strong>: Save conversation logs to disk</li>
+                <li><strong>MEMORY_ENABLED</strong>: Enable AI memory for conversations</li>
+                <li><strong>MAX_MEMORY_ITEMS</strong>: Maximum number of memory items to store</li>
+                <li><strong>COMMANDS_YOLO</strong>: When FALSE, prompts for confirmation before executing commands</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="project-structure">
+        <div class="container">
+            <h2>🧩 Project Structure</h2>
+
+            <div class="code-block">
+                <pre><code>VerbalCodeAi/
+├── app.py
+├── mods/
+│   ├── banners.py
+│   ├── llms.py
+│   ├── terminal_ui.py
+│   ├── terminal_utils.py
+│   └── code/
+│       ├── agent_mode.py
+│       ├── decisions.py
+│       ├── directory.py
+│       ├── embed.py
+│       ├── indexer.py
+│       ├── memory.py
+│       ├── terminal.py
+│       └── tools.py
+├── requirements.txt
+├── setup_windows.bat
+└── setup_linux.sh</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="contributing">
+        <div class="container">
+            <h2>🤝 Contributing</h2>
+            <p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
+            <ol>
+                <li>Fork the repository</li>
+                <li>Create your feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+                <li>Commit your changes (<code>git commit -m 'Add some amazing feature'</code>)</li>
+                <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+                <li>Open a Pull Request</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="license">
+        <div class="container">
+            <h2>📝 License</h2>
+            <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+        </div>
+    </section>
+
+    <section id="links">
+        <div class="container">
+            <h2>🔗 Links</h2>
+            <ul>
+                <li><a href="https://github.com/vibheksoni/VerbalCodeAi" target="_blank">GitHub Repository</a></li>
+                <li><a href="https://github.com/vibheksoni/VerbalCodeAi/issues" target="_blank">Report Issues</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="acknowledgements">
+        <div class="container">
+            <h2>🙏 Acknowledgements</h2>
+            <ul>
+                <li><a href="https://ollama.com/" target="_blank">Ollama</a> for local model execution</li>
+                <li><a href="https://tree-sitter.github.io/tree-sitter/" target="_blank">Tree-sitter</a> for code
+                    parsing</li>
+                <li>All the open-source libraries that make this project possible</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="visual-showcase">
+        <div class="container">
+            <h2>🎬 Visual Showcase</h2>
+
+            <div class="image-slider">
+                <h3>Application Screenshots</h3>
+                <div class="slider-container">
+                    <img src="" alt="VerbalCodeAI Screenshot" id="sliderImage" class="w-full rounded-lg shadow-lg mb-4">
+                    <div class="slider-controls">
+                        <button id="prevImage" class="btn secondary">&#10094; Previous</button>
+                        <button id="nextImage" class="btn secondary">Next &#10095;</button>
+                    </div>
+                    <p id="imageCaption" class="text-center mt-2"></p>
+                </div>
+            </div>
+
+            <div class="video-showcase mt-12">
+                <h3>Simple Showcase Video</h3>
+                <video controls class="w-full rounded-lg shadow-lg" id="showcaseVideo"
+                    poster="assets/images/Agent Showcase.png">
+                    <source src="assets/images/Simple Showcase Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Made with ❤️ by <a href="https://github.com/vibheksoni" target="_blank">Vibhek Soni</a></p>
+            <p>© 2024 VerbalCodeAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/animations.js"></script>
+</body>
+
+</html>
