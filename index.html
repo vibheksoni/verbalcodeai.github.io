@@ -9,6 +9,7 @@
     <meta name="keywords"
         content="VerbalCodeAI, AI coding tool, codebase navigation, open-source, programming, developer tools">
     <title>VerbalCodeAI - Your AI Coding Companion</title>
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,12 +22,13 @@
 <body>
     <nav>
         <div class="container">
-            <a href="#" class="logo">VerbalCodeAI</a>
-            <div class="nav-links">
+            <a href="#" class="logo">VerbalCodeAI</a>            <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it Works</a>
                 <a href="#getting-started">Getting Started</a>
+                <a href="#integrations">Integrations</a>
                 <a href="#configuration">Configuration</a>
+                <a href="https://discord.gg/KpjSDEwWCF" target="_blank" class="btn">Discord</a>
                 <a href="https://github.com/vibheksoni/VerbalCodeAi" target="_blank" class="btn">GitHub</a>
             </div>
         </div>
@@ -37,6 +39,9 @@
             <div class="hero">
                 <h1>VerbalCodeAI</h1>
                 <p class="tagline">Understand Your Code. Instantly.</p>
+                <div class="hero-showcase-gif" style="text-align: center; margin-bottom: 20px;">
+                    <img src="assets/images/VerbalCodeShowcase.gif" alt="VerbalCodeAI Showcase" style="max-width: 800px; max-height: 400px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
                 <div class="badges">
                     <a href="https://github.com/vibheksoni/VerbalCodeAi/stargazers" target="_blank"><img
                             src="https://img.shields.io/github/stars/vibheksoni/VerbalCodeAi?style=social"
@@ -70,6 +75,12 @@ _   _ _______  ______ ______  _______             _______  _____  ______  ______
                     <a href="https://github.com/vibheksoni/VerbalCodeAi" target="_blank" class="btn primary">Get Started
                         (It's Free!)</a>
                     <a href="#features" class="btn secondary">Learn More</a>
+                </div>
+                
+                <div class="discord-banner">
+                    <h3>Join Our Discord Community!</h3>
+                    <p>We're looking for help setting up and moderating our server. If you're experienced with Discord setup, your assistance would be greatly appreciated!</p>
+                    <a href="https://discord.gg/KpjSDEwWCF" target="_blank" class="btn primary">Join Discord</a>
                 </div>
             </div>
         </div>
@@ -114,6 +125,18 @@ _   _ _______  ______ ______  _______             _______  _____  ______  ______
                 <div class="feature-card">
                     <h3>🛠️ Command Runner</h3>
                     <p>Execute system commands with AI assistance</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔌 Model Context Protocol (MCP)</h3>
+                    <p>Support for the emerging MCP standard for cleaner integration with LLMs</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🖥️ HTTP API Server</h3>
+                    <p>Run as a server to integrate VerbalCodeAI with your favorite IDE or editor</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧩 IDE Extensions</h3>
+                    <p>Integrations with Claude Desktop, Cursor, and more to come</p>
                 </div>
             </div>
         </div>
@@ -216,6 +239,11 @@ _   _ _______  ______ ______  _______             _______  _____  ______  ______
                                     <li>Search version history and more</li>
                                 </ul>
                                 <p>No manual searching—just ask, and let the AI do the heavy lifting!</p>
+                                
+                                <div class="pro-tip">
+                                    <h5>💡 Pro Tip</h5>
+                                    <p>Agent Mode is the most cost-effective option when using cloud-based LLM providers. It makes fewer API calls compared to Chat Mode, which helps avoid rate limits and reduces costs. For the best experience with minimal expenses, consider using Agent Mode when working with paid API services.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -406,36 +434,209 @@ chmod +x setup_linux.sh
                     </ul>
                 </div>
             </div>
+        </div>    </section>
+
+    <section id="integrations">
+        <div class="container">
+            <h2>🔌 HTTP API Server</h2>
+            <p>VerbalCodeAI includes a built-in HTTP API server for integrating with external applications and services.</p>
+            
+            <h3>Starting the HTTP API Server</h3>
+            <p>You can start the HTTP API server with the <code>--http</code> command-line option:</p>
+            <div class="code-block">
+                <pre><code>python app.py --http</code></pre>
+            </div>
+            <p>This will start the application with both the terminal UI and the HTTP API server running simultaneously.</p>
+            
+            <h3>API Endpoints</h3>
+            <p>The HTTP API server exposes several endpoints:</p>
+            <div class="code-block">
+                <pre><code>GET    /api/health             - Health check endpoint
+POST   /api/initialize         - Initialize a directory
+POST   /api/ask                - Ask a question about the code
+POST   /api/index/start        - Start indexing a directory
+GET    /api/index/status       - Get indexing status</code></pre>
+            </div>
+            
+            <h3>Example Usage</h3>
+            <p>Here's an example of how to use the API with cURL:</p>
+            <div class="code-block">
+                <pre><code>curl -X POST http://localhost:8000/api/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What does the main function do in this project?"}'</code></pre>
+            </div>
+            
+            <div class="note">
+                <strong>Note:</strong> The HTTP API server is designed for local use by default. If you need to expose it to other machines, configure the host and port appropriately in your environment configuration.
+            </div>
+        </div>
+    </section>
+
+    <section id="mcp-integration">
+        <div class="container">
+            <h2>🤝 MCP Integration</h2>
+            <p>VerbalCodeAI supports the Model Context Protocol (MCP), allowing you to connect it to Claude Desktop and other MCP-compatible AI assistants. This integration enables Claude to directly interact with your codebase, providing a powerful AI-assisted development experience.</p>
+
+            <div class="image-gallery">
+                <img src="assets/images/MCP Showcase.PNG" alt="MCP Integration with Claude Desktop"
+                    class="gallery-image">
+                <img src="assets/images/MCP Showcase 2.PNG" alt="MCP Showcase - Example 2" class="gallery-image">
+            </div>
+
+            <h3>Setting Up the MCP Server</h3>
+            <p>The MCP server wraps the HTTP API server and provides tools for Claude to interact with VerbalCodeAI. Here's how to set it up:</p>
+            <ol>
+                <li>
+                    <strong>Start the HTTP API Server</strong>:
+                    <p>First, start the HTTP API server if it's not already running:</p>
+                    <div class="code-block">
+                        <pre><code>python app.py --serve [PORT]</code></pre>
+                    </div>
+                    <p>Where <code>[PORT]</code> is the port number you want the server to listen on (default is 8000).</p>
+                </li>
+                <li>
+                    <strong>Start the MCP Server</strong>:
+                    <p>In a new terminal window, start the MCP server:</p>
+                    <div class="code-block">
+                        <pre><code>python mcp_server.py</code></pre>
+                    </div>
+                    <p>The MCP server will automatically check if the HTTP API server is running and start it if needed.</p>
+                </li>
+                <li>
+                    <strong>Configure the MCP Server (Optional)</strong>:
+                    <p>You can configure the MCP server by setting the following environment variables in your <code>.env</code> file:</p>
+                    <div class="code-block">
+                        <pre><code>MCP_API_URL=http://localhost:8000  # URL of the HTTP API server
+MCP_HTTP_PORT=8000               # Port to run the HTTP API server on</code></pre>
+                    </div>
+                </li>
+            </ol>
+
+            <h3>Using with Claude Desktop</h3>
+            <p>To use VerbalCodeAI with Claude Desktop:</p>
+            <ol>
+                <li>
+                    <strong>Install Dependencies</strong>:
+                    <p>Ensure all necessary dependencies are installed by running the following command in the repository's root directory:</p>
+                    <div class="code-block">
+                        <pre><code>pip install -r requirements.txt</code></pre>
+                    </div>
+                </li>
+                <li>
+                    <strong>Install the MCP Server in Claude Desktop</strong>:
+                    <p>(Instructions for this step would typically involve placing the server files in a specific directory or using a Claude Desktop interface if available. Refer to Claude Desktop documentation for specifics.)</p>
+                    <p>Restart Claude Desktop for the changes to take effect.</p>
+                </li>
+                <li>
+                    <strong>Open Claude Desktop</strong>:
+                    <ul>
+                        <li>Launch Claude Desktop</li>
+                        <li>Select "VerbalCodeAI" from the list of available tools</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Initialize a Project</strong>:
+                    <p>In Claude Desktop, you can now use the following tools:</p>
+                    <div class="code-block">
+                        <pre><code>set_api_url(url: str) -> str
+health_check() -> Dict[str, str]
+start_http_server_tool(port: int = None) -> Dict[str, str]
+initialize_directory(directory_path: str) -> Dict[str, str]
+ask_agent(question: str) -> Dict[str, str]
+start_indexing(directory_path: str) -> Dict[str, str]
+get_indexing_status() -> Dict[str, str]</code></pre>
+                    </div>
+                </li>
+            </ol>
+
+            <h3>Using with Cursor</h3>
+            <p><a href="https://cursor.sh/" target="_blank">Cursor</a> is an AI-powered code editor that supports MCP. To use VerbalCodeAI with Cursor:</p>
+            <ol>
+                <li><strong>Install Cursor</strong> if you haven't already from <a href="https://cursor.sh/" target="_blank">cursor.sh</a></li>
+                <li>
+                    <strong>Start the MCP Server</strong>:
+                    <div class="code-block">
+                        <pre><code>python mcp_server.py</code></pre>
+                    </div>
+                </li>
+                <li>
+                    <strong>Connect Cursor to the MCP Server</strong>:
+                    <ul>
+                        <li>Open Cursor</li>
+                        <li>Select "VerbalCodeAI" from the list of available tools (refer to Cursor documentation for specific steps).</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Use VerbalCodeAI in Cursor</strong>:
+                    <ul>
+                        <li>Open your project in Cursor</li>
+                        <li>You can ask questions about your codebase, get explanations, and more.</li>
+                    </ul>
+                </li>
+            </ol>
         </div>
     </section>
 
     <section id="configuration">
         <div class="container">
             <h2>⚙️ Configuration</h2>
-            <p>VerbalCodeAI can be configured through the <code>.env</code> file:</p>
-
-            <div class="code-block">
-                <pre><code># Provider can be: ollama, google, openai, or openrouter
+            <p>VerbalCodeAI can be configured through the <code>.env</code> file:</p><div class="code-block">
+                <pre><code># Provider can be: ollama, google, openai, anthropic, groq, or openrouter
 AI_CHAT_PROVIDER=ollama
 AI_EMBEDDING_PROVIDER=ollama
 AI_DESCRIPTION_PROVIDER=ollama
+AI_AGENT_BUDDY_PROVIDER=ollama
 
-# API Keys for each provider (only needed if using that provider)
+# API Keys for each functionality (only needed if using that provider)
+# The same key will be used for the selected provider in each category
 AI_CHAT_API_KEY=None
 AI_EMBEDDING_API_KEY=None
 AI_DESCRIPTION_API_KEY=None
+AI_AGENT_BUDDY_API_KEY=None
 
 # Model names for each provider
-# For ollama: llama2, codellama, mistral, etc.
-# For OpenAI: gpt-4, gpt-3.5-turbo, text-embedding-ada-002
+# For ollama: llama2, codellama, mistral, etc. (embedding)
+# For OpenAI: gpt-4, gpt-3.5-turbo, text-embedding-ada-002 (embedding)
 # For OpenRouter: anthropic/claude-3-opus, openai/gpt-4-turbo, google/gemini-pro, etc.
 # For Google: gemini-pro, gemini-pro-vision
+# For Anthropic: claude-3-5-sonnet-latest, claude-3-opus-20240229, claude-3-haiku-20240307
+# For Groq: llama3-8b-8192, llama3-70b-8192, mixtral-8x7b-32768
 CHAT_MODEL=llama2
 EMBEDDING_MODEL=all-minilm:33m
 DESCRIPTION_MODEL=llama2
+AI_AGENT_BUDDY_MODEL=llama3.2
+
+# Optional: Site information for OpenRouter rankings
+SITE_URL=http://localhost:3000
+SITE_NAME=Local Development
 
 # Performance settings (LOW, MEDIUM, MAX)
+# LOW: Minimal resource usage, suitable for low-end systems
+# MEDIUM: Balanced resource usage, suitable for most systems
+# MAX: Maximum resource usage, suitable for high-end systems
 PERFORMANCE_MODE=MEDIUM
+# Maximum number of threads to use (will be calculated automatically if not set)
+MAX_THREADS=16
+# Cache size for embedding queries (higher values use more memory but improve performance)
+EMBEDDING_CACHE_SIZE=1000
+# Similarity threshold for embedding search (lower values return more results but may be less relevant)
+EMBEDDING_SIMILARITY_THRESHOLD=0.05
+
+# HTTP API Server Settings
+HTTP_SERVER_ENABLED=FALSE
+HTTP_SERVER_PORT=8000
+HTTP_SERVER_HOST=127.0.0.1
+# Allow connections from any IP address (TRUE/FALSE)
+# When FALSE, the server only accepts connections from localhost (127.0.0.1)
+# When TRUE, the server accepts connections from any IP address (0.0.0.0)
+# WARNING: Setting this to TRUE may expose your API to the internet
+HTTP_ALLOW_ALL_ORIGINS=FALSE
+
+# MCP (Model Context Protocol) Settings
+# URL of the HTTP API server for MCP to connect to
+MCP_API_URL=http://localhost:8000
+# Port to run the HTTP API server on
+MCP_HTTP_PORT=8000
 
 # UI Settings
 ENABLE_MARKDOWN_RENDERING=TRUE
@@ -445,60 +646,129 @@ CHAT_LOGS=FALSE
 MEMORY_ENABLED=TRUE
 MAX_MEMORY_ITEMS=10
 COMMANDS_YOLO=FALSE</code></pre>
+            </div><h3>Supported LLM Providers</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <img src="https://images.seeklogo.com/logo-png/59/1/ollama-logo-png_seeklogo-593420.png" alt="Ollama logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <div><strong>Ollama</strong>: Local models (default)</div>
+                </li>
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <img src="https://logos-world.net/wp-content/uploads/2023/05/Google-Bard-AI-Logo.png" alt="Google AI logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <div><strong>Google AI</strong>: Cloud-based models (requires API key)</div>
+                </li>
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/openai-old-logo.png?quality=90&strip=all&crop=7.8125%2C0%2C84.375%2C100&w=2400" alt="OpenAI logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <div><strong>OpenAI</strong>: OpenAI models (requires API key)</div>
+                </li>
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROScdzQQ7P9TpyyBE4qlB43zKKpesGArmB1w&s" alt="Anthropic logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <div><strong>Anthropic</strong>: Claude 3 models (requires API key)</div>
+                </li>
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHVsO5kFrri_uqZdlB6mACC2bdyyy6D0bYag&s" alt="Groq logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <div><strong>Groq</strong>: Fast inference for Mixtral and LLama models (requires API key)</div>
+                </li>
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <img src="https://pbs.twimg.com/profile_images/1682268668321726464/NEb6_n7n_400x400.jpg" alt="OpenRouter logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <div><strong>OpenRouter</strong>: Various cloud models (requires API key)</div>
+                </li>
+            </ul>
+            
+            <div class="provider-details">
+                <div class="provider-card">
+                    <h4>Recommended Ollama Setup</h4>
+                    <p>For the best local experience without any API costs, the developer recommends using these Ollama models:</p>
+                    <ul>
+                        <li><strong>Chat/Description</strong>: <code>gemma3</code> - Google's Gemma 3 model provides excellent code understanding and generation</li>
+                        <li><strong>Embeddings</strong>: <code>all-minilm</code> - Efficient and accurate embeddings for code search and retrieval</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code># Install the recommended models
+ollama pull gemma3
+ollama pull all-minilm
+
+# Configure in .env
+AI_CHAT_PROVIDER=ollama
+AI_EMBEDDING_PROVIDER=ollama
+AI_DESCRIPTION_PROVIDER=ollama
+CHAT_MODEL=gemma3
+EMBEDDING_MODEL=all-minilm:33m
+DESCRIPTION_MODEL=gemma3</code></pre>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <h4>Anthropic Claude Models</h4>
+                    <p>Anthropic's Claude models are particularly strong at understanding and generating code. Available models include:</p>
+                    <ul>
+                        <li><strong>claude-3-5-sonnet-latest</strong>: Latest version of Claude 3.5 Sonnet, excellent balance of performance and speed</li>
+                        <li><strong>claude-3-opus-20240229</strong>: Most powerful Claude model with advanced reasoning capabilities</li>
+                        <li><strong>claude-3-haiku-20240307</strong>: Fastest and most cost-effective Claude model</li>
+                    </ul>
+                    <p>Note: Anthropic does not provide embedding capabilities, so you'll need to use a different provider for embeddings.</p>
+                </div>
+
+                <div class="provider-card">
+                    <h4>Groq Models</h4>
+                    <p>Groq provides ultra-fast inference for popular open-source models. Available models include:</p>
+                    <ul>
+                        <li><strong>llama3-8b-8192</strong>: Smaller Llama 3 model with 8B parameters, good balance of performance and speed</li>
+                        <li><strong>llama3-70b-8192</strong>: Larger Llama 3 model with 70B parameters, excellent reasoning capabilities</li>
+                        <li><strong>mixtral-8x7b-32768</strong>: Mixtral model with 8x7B parameters and 32k context window</li>
+                    </ul>
+                    <p>Note: Groq does not provide embedding capabilities, so you'll need to use a different provider for embeddings.</p>
+                </div>
             </div>
-
-            <h3>Supported LLM Providers</h3>
-            <ul>
-                <li><strong>Ollama</strong>: Local models (default)</li>
-                <li><strong>Google AI</strong>: Cloud-based models (requires API key)</li>
-                <li><strong>OpenAI</strong>: OpenAI models (requires API key)</li>
-                <li><strong>OpenRouter</strong>: Various cloud models (requires API key)</li>
-            </ul>
-
-            <h3>Performance Settings</h3>
-            <ul>
-                <li><strong>LOW</strong>: Minimal resource usage, suitable for low-end systems</li>
-                <li><strong>MEDIUM</strong>: Balanced resource usage, suitable for most systems</li>
-                <li><strong>MAX</strong>: Maximum resource usage, suitable for high-end systems</li>
-            </ul>
-
-            <h3>UI Settings</h3>
-            <ul>
-                <li><strong>ENABLE_MARKDOWN_RENDERING</strong>: Enable/disable markdown rendering in responses</li>
-                <li><strong>SHOW_THINKING_BLOCKS</strong>: Show AI's thinking process in responses</li>
-                <li><strong>ENABLE_STREAMING_MODE</strong>: Enable streaming responses (may be slower)</li>
-                <li><strong>CHAT_LOGS</strong>: Save conversation logs to disk</li>
-                <li><strong>MEMORY_ENABLED</strong>: Enable AI memory for conversations</li>
-                <li><strong>MAX_MEMORY_ITEMS</strong>: Maximum number of memory items to store</li>
-                <li><strong>COMMANDS_YOLO</strong>: When FALSE, prompts for confirmation before executing commands</li>
-            </ul>
         </div>
     </section>
 
     <section id="project-structure">
         <div class="container">
-            <h2>🧩 Project Structure</h2>
-
-            <div class="code-block">
+            <h2>🧩 Project Structure</h2>            <div class="code-block">
                 <pre><code>VerbalCodeAi/
-├── app.py
-├── mods/
-│   ├── banners.py
-│   ├── llms.py
-│   ├── terminal_ui.py
-│   ├── terminal_utils.py
-│   └── code/
-│       ├── agent_mode.py
-│       ├── decisions.py
-│       ├── directory.py
-│       ├── embed.py
-│       ├── indexer.py
-│       ├── memory.py
-│       ├── terminal.py
-│       └── tools.py
-├── requirements.txt
-├── setup_windows.bat
-└── setup_linux.sh</code></pre>
+├── app.py                  # Main application entry point
+├── mcp_server.py           # MCP server wrapper
+├── mcp_server_http.py      # HTTP-based MCP server implementation
+├── mods/                   # Core modules
+│   ├── banners.py          # ASCII art banners
+│   ├── http_api.py         # HTTP API server implementation
+│   ├── llms.py             # LLM integration
+│   ├── terminal_ui.py      # Terminal UI components
+│   ├── terminal_utils.py   # Terminal utilities
+│   └── code/               # Code processing modules
+│       ├── agent_mode.py   # Agent mode implementation
+│       ├── decisions.py    # AI decision making
+│       ├── directory.py    # Directory structure handling
+│       ├── embed.py        # Embedding generation and search
+│       ├── indexer.py      # File indexing
+│       ├── memory.py       # Memory management
+│       ├── terminal.py     # Terminal command execution
+│       └── tools.py        # Agent tools
+├── integrations/           # IDE and tool integrations
+│   ├── claude/             # Claude Desktop integration
+│   ├── cursor/             # Cursor editor integration
+│   └── README.md           # Integration documentation
+├── requirements.txt        # Python dependencies
+├── setup_windows.bat       # Windows setup script
+└── setup_linux.sh          # Linux setup script</code></pre>
+            </div>
+        </div>
+    </section>    <section id="community">
+        <div class="container">
+            <h2>👥 Community</h2>
+            <p>Join our growing community of developers using VerbalCodeAI!</p>
+            
+            <div class="discord-card">
+                <h3>Discord Server</h3>
+                <p>Join our Discord server to:</p>
+                <ul>
+                    <li>Get help with installation and configuration</li>
+                    <li>Share your use cases and tips</li>
+                    <li>Contribute to the project</li>
+                    <li>Connect with other developers using VerbalCodeAI</li>
+                    <li>Get early access to new features</li>
+                </ul>
+                <a href="https://discord.gg/KpjSDEwWCF" target="_blank" class="btn primary">Join Discord</a>
             </div>
         </div>
     </section>
@@ -514,6 +784,14 @@ COMMANDS_YOLO=FALSE</code></pre>
                 <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
                 <li>Open a Pull Request</li>
             </ol>
+
+            <h3>Areas Where Help is Needed</h3>
+            <ul>
+                <li><strong>IDE Integrations</strong>: Help build plugins for VSCode, Neovim, and other editors</li>
+                <li><strong>Documentation</strong>: Improve guides and examples</li>
+                <li><strong>Testing</strong>: Help test on different platforms and setups</li>
+                <li><strong>Feature Development</strong>: Implement new tools and capabilities</li>
+            </ul>
         </div>
     </section>
 
@@ -537,7 +815,7 @@ COMMANDS_YOLO=FALSE</code></pre>
     <section id="acknowledgements">
         <div class="container">
             <h2>🙏 Acknowledgements</h2>
-            <ul>
+            <ul></ul>
                 <li><a href="https://ollama.com/" target="_blank">Ollama</a> for local model execution</li>
                 <li><a href="https://tree-sitter.github.io/tree-sitter/" target="_blank">Tree-sitter</a> for code
                     parsing</li>
@@ -553,12 +831,12 @@ COMMANDS_YOLO=FALSE</code></pre>
             <div class="image-slider">
                 <h3>Application Screenshots</h3>
                 <div class="slider-container">
-                    <img src="" alt="VerbalCodeAI Screenshot" id="sliderImage" class="w-full rounded-lg shadow-lg mb-4">
+                    <img src="assets/images/Agent Showcase.png" alt="VerbalCodeAI Screenshot" id="sliderImage" class="w-full rounded-lg shadow-lg mb-4">
                     <div class="slider-controls">
                         <button id="prevImage" class="btn secondary">&#10094; Previous</button>
                         <button id="nextImage" class="btn secondary">Next &#10095;</button>
                     </div>
-                    <p id="imageCaption" class="text-center mt-2"></p>
+                    <p id="imageCaption" class="text-center mt-2">Agent Mode Showcase</p>
                 </div>
             </div>
 

@@ -32100,6 +32100,244 @@ footer a:hover {
   text-align: center;
 }
 
+/* MCP Integration Styles */
+
+#mcp-integration .mcp-showcase-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+#mcp-integration .mcp-showcase-item {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
+}
+
+#mcp-integration .showcase-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#mcp-integration .showcase-image:hover {
+  transform: scale(1.02);
+}
+
+#mcp-integration .caption {
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+#mcp-integration .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+#mcp-integration .benefit-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+#mcp-integration .benefit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent-color);
+}
+
+#mcp-integration .benefit-card h4 {
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+#mcp-integration .setup-steps {
+  margin: 1.5rem 0;
+}
+
+#mcp-integration .step {
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1.5rem;
+}
+
+#mcp-integration .step h4 {
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+#mcp-integration .platform-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+#mcp-integration .platform-card h4 {
+  color: var(--accent-color);
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+#mcp-integration .demo-conversation {
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+}
+
+#mcp-integration .user-message {
+  background-color: rgba(59, 130, 246, 0.2);
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin: 0.75rem 0;
+}
+
+#mcp-integration .ai-message {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin: 0.75rem 0;
+}
+
+#mcp-integration .tool-usage {
+  background-color: var(--code-bg);
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+#mcp-integration .tool-name {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+#mcp-integration .tool-input,
+#mcp-integration .tool-result {
+  padding-left: 1rem;
+  margin: 0.25rem 0;
+  word-break: break-word;
+}
+
+#mcp-integration .mcp-intro {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* HTTP API Server Section Styles */
+
+#integrations .note {
+  background-color: var(--note-bg-color);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 5px 5px 0;
+}
+
+/* Advanced Configuration Section */
+
+#mcp-integration .advanced-configuration {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+#mcp-integration .advanced-configuration h3 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+/* Discord Banner Styles */
+
+.discord-banner {
+  background-color: #5865F2;
+  color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 6px 12px rgba(88, 101, 242, 0.4);
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.discord-banner h3 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.discord-banner p {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.discord-banner .btn.primary {
+  background-color: white;
+  color: #5865F2;
+  font-weight: bold;
+}
+
+.discord-banner .btn.primary:hover {
+  background-color: #e5e7eb;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(88, 101, 242, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(88, 101, 242, 0);
+  }
+}
+
+/* Pro Tip styles */
+
+.pro-tip {
+  background-color: var(--note-bg-color);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 0 5px 5px 0;
+}
+
+.pro-tip h5 {
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
 @media (max-width: 768px) {
   .slider-container,
   .video-showcase {
@@ -32117,6 +32355,14 @@ footer a:hover {
 
   .slider-controls .btn {
     width: 100%;
+  }
+
+  #mcp-integration .mcp-showcase-item {
+    min-width: 100%;
+  }
+
+  #mcp-integration .benefits-grid {
+    grid-template-columns: 1fr;
   }
 }
 
