@@ -622,30 +622,37 @@ EMBEDDING_CACHE_SIZE=1000
 # Similarity threshold for embedding search (lower values return more results but may be less relevant)
 EMBEDDING_SIMILARITY_THRESHOLD=0.05
 
+# UI Settings
+# Enable/disable markdown rendering (TRUE/FALSE)
+ENABLE_MARKDOWN_RENDERING=TRUE
+# Show thinking blocks in AI responses (TRUE/FALSE)
+SHOW_THINKING_BLOCKS=FALSE
+# Enable streaming mode for AI responses (TRUE/FALSE) # Tends to be slower for some reason # Broken for openrouter TODO: Fix this at some point !
+ENABLE_STREAMING_MODE=FALSE
+# Enable chat logging to save conversations (TRUE/FALSE)
+CHAT_LOGS=FALSE
+# Enable memory for AI conversations (TRUE/FALSE)
+MEMORY_ENABLED=TRUE
+# Maximum number of memory items to store
+MAX_MEMORY_ITEMS=10
+# Execute commands without confirmation (TRUE/FALSE)
+# When FALSE, the user will be prompted to confirm before executing any command
+# When TRUE, commands will execute automatically without confirmation
+COMMANDS_YOLO=FALSE
+
 # HTTP API Server Settings
-HTTP_SERVER_ENABLED=FALSE
-HTTP_SERVER_PORT=8000
-HTTP_SERVER_HOST=127.0.0.1
 # Allow connections from any IP address (TRUE/FALSE)
 # When FALSE, the server only accepts connections from localhost (127.0.0.1)
 # When TRUE, the server accepts connections from any IP address (0.0.0.0)
 # WARNING: Setting this to TRUE may expose your API to the internet
 HTTP_ALLOW_ALL_ORIGINS=FALSE
 
-# MCP (Model Context Protocol) Settings
-# URL of the HTTP API server for MCP to connect to
+# MCP Server Settings
+# URL of the HTTP API server
 MCP_API_URL=http://localhost:8000
 # Port to run the HTTP API server on
 MCP_HTTP_PORT=8000
-
-# UI Settings
-ENABLE_MARKDOWN_RENDERING=TRUE
-SHOW_THINKING_BLOCKS=FALSE
-ENABLE_STREAMING_MODE=FALSE
-CHAT_LOGS=FALSE
-MEMORY_ENABLED=TRUE
-MAX_MEMORY_ITEMS=10
-COMMANDS_YOLO=FALSE</code></pre>
+</code></pre>
             </div><h3>Supported LLM Providers</h3>
             <ul style="list-style-type: none; padding-left: 0;">
                 <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
