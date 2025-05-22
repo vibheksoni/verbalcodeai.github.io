@@ -22,7 +22,13 @@
 <body>
     <nav>
         <div class="container">
-            <a href="#" class="logo">VerbalCodeAI</a>            <div class="nav-links">
+            <div class="nav-container">
+                <a href="#" class="logo">VerbalCodeAI</a>
+                <button id="mobile-menu-toggle" class="mobile-menu-button">
+                    <span class="menu-icon"></span>
+                </button>
+            </div>
+            <div class="nav-links" id="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it Works</a>
                 <a href="#getting-started">Getting Started</a>
@@ -66,10 +72,7 @@ _   _ _______  ______ ______  _______             _______  _____  ______  ______
         [AI Assistant for Code]
                 </div>
                 <p class="description">
-                    A powerful AI-powered code assistant that helps you understand, navigate, and work with codebases
-                    more efficiently.
-                    VerbalCodeAI uses advanced embedding techniques and LLM integration to provide intelligent code
-                    analysis and assistance directly in your terminal.
+                    Ever felt lost in a complex codebase? VerbalCodeAI is your personal code companion, leveraging advanced embedding techniques and Large Language Model (LLM) integration. It offers intelligent code analysis, helps you search and understand your project, and provides assistance directly within your command-line interface, making your development workflow smoother and more efficient.
                 </p>
                 <div class="cta-buttons">
                     <a href="https://github.com/vibheksoni/VerbalCodeAi" target="_blank" class="btn primary">Get Started
@@ -127,16 +130,16 @@ _   _ _______  ______ ______  _______             _______  _____  ______  ______
                     <p>Execute system commands with AI assistance</p>
                 </div>
                 <div class="feature-card">
-                    <h3>🔌 Model Context Protocol (MCP)</h3>
-                    <p>Support for the emerging MCP standard for cleaner integration with LLMs</p>
+                    <h3>🔌 HTTP API Server</h3>
+                    <p>Integrate with other tools via the built-in HTTP API</p>
                 </div>
                 <div class="feature-card">
-                    <h3>🖥️ HTTP API Server</h3>
-                    <p>Run as a server to integrate VerbalCodeAI with your favorite IDE or editor</p>
+                    <h3>🤝 MCP Integration</h3>
+                    <p>Connect with Claude Desktop and other MCP-compatible AI assistants</p>
                 </div>
                 <div class="feature-card">
-                    <h3>🧩 IDE Extensions</h3>
-                    <p>Integrations with Claude Desktop, Cursor, and more to come</p>
+                    <h3>🔧 Customizable</h3>
+                    <p>Configure LLM providers, models, and behavior to suit your needs</p>
                 </div>
             </div>
         </div>
@@ -152,99 +155,47 @@ _   _ _______  ______ ______  _______             _______  _____  ______  ______
 
                 <div class="index-folders">
                     <div class="folder-item">
-                        <h4><code>.index/descriptions</code></h4>
-                        <p>Generates a txt file for each file containing a short description of the file</p>
+                        <h4>Code Embeddings</h4>
+                        <p>VerbalCodeAI analyzes your code files and generates vector embeddings, enabling semantic search capabilities.</p>
                     </div>
                     <div class="folder-item">
-                        <h4><code>.index/embeddings</code></h4>
-                        <p>Generates a json file for each file containing the code chunk and embeddings</p>
+                        <h4>File Metadata</h4>
+                        <p>Information about file types, sizes, and structure is collected to help with navigation and search.</p>
                     </div>
                     <div class="folder-item">
-                        <h4><code>.index/metadata</code></h4>
-                        <p>Generates a json file for each file containing hash of file, line numbers, etc.</p>
-                    </div>
-                    <div class="folder-item">
-                        <h4><code>.index/project_description.json</code></h4>
-                        <p>Has a description of the project name, tech stack, and a summary of it</p>
+                        <h4>Code Structure</h4>
+                        <p>Functions, classes, and imports are identified and indexed for quick reference.</p>
                     </div>
                 </div>
             </div>
 
             <div class="chat-modes">
-                <h3>Chat Modes</h3>
-                <p>VerbalCodeAI offers three powerful ways to interact with your code:</p>
+                <h3>Interaction Modes</h3>
+                <p>VerbalCodeAI offers two powerful ways to interact with your code:</p>
 
                 <div class="mode-grid">
                     <div class="mode-card">
-                        <h4>💬 Chat with AI</h4>
-                        <ol>
-                            <li>You type a question about your code.</li>
-                            <li>The AI searches for relevant files and project info.</li>
-                            <li>It uses its memory to recall past conversations and context.</li>
-                            <li>The AI generates a direct, conversational answer, referencing code, files, or project
-                                details as needed.</li>
-                            <li>You can continue the conversation or ask follow-up questions.</li>
-                        </ol>
+                        <h4>Chat Mode</h4>
+                        <p>Have natural conversations about your code:</p>
+                        <ul>
+                            <li>Ask questions about code functionality</li>
+                            <li>Request explanations of complex sections</li>
+                            <li>Get suggestions for improvements</li>
+                            <li>Understand dependencies and relationships</li>
+                        </ul>
                     </div>
-
                     <div class="mode-card">
-                        <h4>🚀 Max Chat Mode</h4>
-                        <ol>
-                            <li>You ask a question (like in Chat with AI).</li>
-                            <li>The AI finds the most relevant files for your question.</li>
-                            <li>It sends the full content of those files to the AI model, giving the AI maximum
-                                context.</li>
-                            <li>The AI generates a highly detailed, context-rich answer, useful for complex questions,
-                                code reviews, or debugging.</li>
-                            <li>You get a thorough response, with all relevant code considered.</li>
-                        </ol>
-                    </div>
-
-                    <div class="mode-card full-width">
-                        <h4>🤖 Agent Mode</h4>
-                        <div class="agent-mode-container">
-                            <div class="agent-diagram">
-                                <div class="diagram-item step-1">
-                                    <div class="diagram-icon">🧠</div>
-                                    <div class="diagram-content">
-                                        <h5>Plan</h5>
-                                        <p>Understand your request and decide which tools to use</p>
-                                    </div>
-                                </div>
-                                <div class="diagram-arrow">→</div>
-                                <div class="diagram-item step-2">
-                                    <div class="diagram-icon">🔍</div>
-                                    <div class="diagram-content">
-                                        <h5>Explore</h5>
-                                        <p>Use specialized tools to search, read, and analyze your code</p>
-                                    </div>
-                                </div>
-                                <div class="diagram-arrow">→</div>
-                                <div class="diagram-item step-3">
-                                    <div class="diagram-icon">💡</div>
-                                    <div class="diagram-content">
-                                        <h5>Explain</h5>
-                                        <p>Synthesize findings into clear, actionable answers</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="agent-description">
-                                <p>The Agent Mode allows you to interact with your codebase using a powerful AI agent
-                                    that uses specialized tools to explore, search, and understand your code.</p>
-                                <p>With Agent Mode, you can:</p>
-                                <ul>
-                                    <li>Instantly find code snippets, functions, or classes</li>
-                                    <li>Get explanations for complex code</li>
-                                    <li>Analyze dependencies and project structure</li>
-                                    <li>Search version history and more</li>
-                                </ul>
-                                <p>No manual searching—just ask, and let the AI do the heavy lifting!</p>
-                                
-                                <div class="pro-tip">
-                                    <h5>💡 Pro Tip</h5>
-                                    <p>Agent Mode is the most cost-effective option when using cloud-based LLM providers. It makes fewer API calls compared to Chat Mode, which helps avoid rate limits and reduces costs. For the best experience with minimal expenses, consider using Agent Mode when working with paid API services.</p>
-                                </div>
-                            </div>
+                        <h4>Agent Mode</h4>
+                        <p>Let the AI use tools to explore your codebase:</p>
+                        <ul>
+                            <li>Search for specific code patterns</li>
+                            <li>Analyze code structure and dependencies</li>
+                            <li>Execute commands to test functionality</li>
+                            <li>Access web resources for additional context</li>
+                            <li>Generate comprehensive reports</li>
+                        </ul>
+                        <div class="pro-tip" style="background-color: var(--note-bg-color); border-left: 4px solid var(--accent-color); padding: 1rem; margin: 0.5rem 0; border-radius: 0 4px 4px 0;">
+                            <p><strong>💡 Pro Tip:</strong> Agent Mode is more cost-effective when using cloud-based LLM providers as it makes fewer API calls.</p>
                         </div>
                     </div>
                 </div>
@@ -434,19 +385,25 @@ chmod +x setup_linux.sh
                     </ul>
                 </div>
             </div>
-        </div>    </section>
+
+            <div class="pro-tip" style="background-color: var(--note-bg-color); border-left: 4px solid var(--accent-color); padding: 1rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0;">
+                <h5 style="color: var(--accent-color); margin-top: 0;">💡 Pro Tip</h5>
+                <p>Agent Mode is the most cost-effective option when using cloud-based LLM providers. It makes fewer API calls compared to Chat Mode, which helps avoid rate limits and reduces costs. For the best experience with minimal expenses, consider using Agent Mode when working with paid API services.</p>
+            </div>
+        </div>    
+    </section>
 
     <section id="integrations">
         <div class="container">
             <h2>🔌 HTTP API Server</h2>
-            <p>VerbalCodeAI includes a built-in HTTP API server for integrating with external applications and services.</p>
+            <p>VerbalCodeAI includes a built-in HTTP API server that allows you to access its functionality programmatically. This is useful for integrating VerbalCodeAI with other tools or creating custom interfaces.</p>
             
             <h3>Starting the HTTP API Server</h3>
-            <p>You can start the HTTP API server with the <code>--http</code> command-line option:</p>
+            <p>To start the HTTP API server:</p>
             <div class="code-block">
-                <pre><code>python app.py --http</code></pre>
+                <pre><code>python app.py --serve [PORT]</code></pre>
             </div>
-            <p>This will start the application with both the terminal UI and the HTTP API server running simultaneously.</p>
+            <p>Where <code>[PORT]</code> is the port number you want the server to listen on (default is 8000).</p>
             
             <h3>API Endpoints</h3>
             <p>The HTTP API server exposes several endpoints:</p>
@@ -467,7 +424,7 @@ GET    /api/index/status       - Get indexing status</code></pre>
             </div>
             
             <div class="note">
-                <strong>Note:</strong> The HTTP API server is designed for local use by default. If you need to expose it to other machines, configure the host and port appropriately in your environment configuration.
+                <strong>Note:</strong> By default, the server only accepts connections from localhost (127.0.0.1). To allow connections from any IP address, set the <code>HTTP_ALLOW_ALL_ORIGINS</code> environment variable to <code>TRUE</code> in your <code>.env</code> file.
             </div>
         </div>
     </section>
@@ -475,12 +432,21 @@ GET    /api/index/status       - Get indexing status</code></pre>
     <section id="mcp-integration">
         <div class="container">
             <h2>🤝 MCP Integration</h2>
-            <p>VerbalCodeAI supports the Model Context Protocol (MCP), allowing you to connect it to Claude Desktop and other MCP-compatible AI assistants. This integration enables Claude to directly interact with your codebase, providing a powerful AI-assisted development experience.</p>
-
-            <div class="image-gallery">
-                <img src="assets/images/MCP Showcase.PNG" alt="MCP Integration with Claude Desktop"
-                    class="gallery-image">
-                <img src="assets/images/MCP Showcase 2.PNG" alt="MCP Showcase - Example 2" class="gallery-image">
+            <p>VerbalCodeAI supports the Model Context Protocol (MCP), allowing you to connect it to Claude Desktop and other MCP-compatible AI assistants. This integration enables Claude to directly interact with your codebase, providing a powerful AI-assisted development experience.</p>            <div class="mcp-showcase-gallery">
+                <div class="mcp-showcase-item">
+                    <div class="image-container">
+                        <img src="assets/images/MCP Showcase.PNG" alt="MCP Integration with Claude Desktop"
+                            class="mcp-showcase-image">
+                    </div>
+                    <p class="image-caption">Claude Desktop MCP Integration</p>
+                </div>
+                <div class="mcp-showcase-item">
+                    <div class="image-container">
+                        <img src="assets/images/MCP Showcase 2.PNG" alt="MCP Showcase - Example 2" 
+                            class="mcp-showcase-image">
+                    </div>
+                    <p class="image-caption">Claude analyzing code with VerbalCodeAI</p>
+                </div>
             </div>
 
             <h3>Setting Up the MCP Server</h3>
@@ -622,6 +588,14 @@ EMBEDDING_CACHE_SIZE=1000
 # Similarity threshold for embedding search (lower values return more results but may be less relevant)
 EMBEDDING_SIMILARITY_THRESHOLD=0.05
 
+# API Rate Limiting Settings
+# Delay in milliseconds between embedding API calls to prevent rate limiting
+# Recommended: 100ms for Google, 0ms for OpenAI/Ollama (set to 0 to disable)
+EMBEDDING_API_DELAY_MS=100
+# Delay in milliseconds between description generation API calls to prevent rate limiting
+# Recommended: 100ms for Google, 0ms for OpenAI/Ollama (set to 0 to disable)
+DESCRIPTION_API_DELAY_MS=100
+
 # UI Settings
 # Enable/disable markdown rendering (TRUE/FALSE)
 ENABLE_MARKDOWN_RENDERING=TRUE
@@ -656,7 +630,7 @@ MCP_HTTP_PORT=8000
             </div><h3>Supported LLM Providers</h3>
             <ul style="list-style-type: none; padding-left: 0;">
                 <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <img src="https://images.seeklogo.com/logo-png/59/1/ollama-logo-png_seeklogo-593420.png" alt="Ollama logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
+                    <img src="https://media.licdn.com/dms/image/v2/D5612AQEOULWgnVbBRA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1713098774047?e=2147483647&v=beta&t=ci_6MctI3jG8VK_mPNiyGuno_3ePW_IEJKCjACj2gCg" alt="Ollama logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
                     <div><strong>Ollama</strong>: Local models (default)</div>
                 </li>
                 <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
@@ -671,7 +645,7 @@ MCP_HTTP_PORT=8000
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROScdzQQ7P9TpyyBE4qlB43zKKpesGArmB1w&s" alt="Anthropic logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
                     <div><strong>Anthropic</strong>: Claude 3 models (requires API key)</div>
                 </li>
-                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <li style="display: flex; align-items: center; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);"></li>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHVsO5kFrri_uqZdlB6mACC2bdyyy6D0bYag&s" alt="Groq logo" style="height: 36px; width: 36px; object-fit: contain; margin-right: 12px; border-radius: 4px;">
                     <div><strong>Groq</strong>: Fast inference for Mixtral and LLama models (requires API key)</div>
                 </li>
@@ -858,6 +832,13 @@ DESCRIPTION_MODEL=gemma3</code></pre>
         </div>
     </section>
 
+    <!-- Image Fullscreen Modal -->
+    <div id="image-modal" class="image-fullscreen-modal">
+        <span class="close-modal">&times;</span>
+        <img id="fullscreen-image" class="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
     <footer>
         <div class="container">
             <p>Made with ❤️ by <a href="https://github.com/vibheksoni" target="_blank">Vibhek Soni</a></p>
@@ -866,6 +847,80 @@ DESCRIPTION_MODEL=gemma3</code></pre>
     </footer>
 
     <script src="assets/js/animations.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            if (menuButton && navLinks) {
+                menuButton.addEventListener('click', function() {
+                    menuButton.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuButton.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+
+        // Image slider functionality
+        let currentImageIndex = 0;
+        const images = [
+            'assets/images/Agent Showcase.png',
+            'assets/images/Another Showcase Image.png', // Add more images as needed
+        ];
+
+        function showImage(index) {
+            const sliderImage = document.getElementById('sliderImage');
+            const imageCaption = document.getElementById('imageCaption');
+            if (sliderImage && imageCaption) {
+                sliderImage.src = images[index];
+                imageCaption.textContent = `Image ${index + 1} of ${images.length}`;
+            }
+        }
+
+        document.getElementById('nextImage').addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        });
+
+        document.getElementById('prevImage').addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        });
+
+        // Fullscreen image modal
+        const imageModal = document.getElementById('image-modal');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+        const closeModal = document.querySelector('.close-modal');
+
+        document.querySelectorAll('.image-container img').forEach(img => {
+            img.addEventListener('click', function() {
+                const src = this.src;
+                const alt = this.alt;
+                fullscreenImage.src = src;
+                document.getElementById('modal-caption').textContent = alt;
+                imageModal.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', function() {
+            imageModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === imageModal) {
+                imageModal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     if (window.gsap) {
         gsap.registerPlugin(ScrollTrigger);
-        
+
         pageLoadAnimation();
         animateToolCategories();
     }
-    
+
     showFeatureCards();
     createTypingEffect();
     setupSmoothScrolling();
     createScrollToTopButton();
     createThemeToggler();
     initializeImageSlider();
+    animateMcpShowcase();
+    setupImageFullscreen();
 });
 
 function pageLoadAnimation() {
@@ -251,42 +253,39 @@ function initializeImageSlider() {
     const imageCaption = document.getElementById('imageCaption');
     const prevButton = document.getElementById('prevImage');
     const nextButton = document.getElementById('nextImage');
-    
+
     console.log('Image slider elements:', { sliderImage, imageCaption, prevButton, nextButton });
-    
+
     if (!sliderImage || !imageCaption || !prevButton || !nextButton) {
         console.error('Image slider elements not found');
         return;
     }
-    
-    // Explicitly set the first image on page load
+
     if (sliderImage && images.length > 0) {
         sliderImage.src = images[0].src;
         sliderImage.alt = images[0].caption;
         if (imageCaption) {
             imageCaption.textContent = images[0].caption;
         }
-    }    
-    
+    }
+
     function updateSlider() {
         /**
          * Updates the slider with the current image and caption.
          */
-        // Show loading state
         sliderImage.style.opacity = '0.5';
-        
-        // Load new image
+
         const img = new Image();
         img.src = images[currentIndex].src;
-        
-        img.onload = function() {
+
+        img.onload = function () {
             sliderImage.src = images[currentIndex].src;
             sliderImage.alt = images[currentIndex].caption;
             imageCaption.textContent = images[currentIndex].caption;
             sliderImage.style.opacity = '1';
         };
-        
-        img.onerror = function() {
+
+        img.onerror = function () {
             console.error('Failed to load image:', images[currentIndex].src);
             sliderImage.src = '';
             sliderImage.alt = 'Image failed to load';
@@ -313,4 +312,83 @@ function initializeImageSlider() {
         prevButton.style.display = 'none';
         nextButton.style.display = 'none';
     }
+}
+
+function animateMcpShowcase() {
+    /**
+     * Animates the MCP showcase gallery when it enters the viewport.
+     */
+    const mcpShowcase = document.querySelector('#mcp-integration .mcp-showcase-gallery');
+
+    if (!mcpShowcase) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                mcpShowcase.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(mcpShowcase);
+}
+
+function setupImageFullscreen() {
+    /**
+     * Enables click-to-fullscreen functionality for all images on the website.
+     * Excludes logos, icons, and other non-content images.
+     */
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('fullscreen-image');
+    const captionText = document.getElementById('modal-caption');
+    const closeBtn = document.querySelector('.close-modal');
+
+    const clickableImageSelectors = [
+        '.mcp-showcase-image',
+        '.gallery-image',
+        '.hero-showcase-gif img',
+        '#visual-showcase img',
+        '.slider-container img'
+    ];
+
+    const images = document.querySelectorAll(clickableImageSelectors.join(', '));
+
+    images.forEach(img => {
+        img.classList.add('clickable-image');
+
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+
+            let captionContent = this.alt || '';
+            const nearbyCaption = this.closest('.mcp-showcase-item')?.querySelector('.image-caption');
+            if (nearbyCaption) {
+                captionContent = nearbyCaption.textContent;
+            }
+
+            captionText.textContent = captionContent;
+
+            document.body.style.overflow = 'hidden';
+        };
+    });
+
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+        document.body.style.overflow = 'auto';
+    };
+
+    modal.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto';
+        }
+    };
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
 }

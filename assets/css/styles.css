@@ -31764,6 +31764,19 @@ footer a:hover {
     right: 20px;
     font-size: 20px;
   }
+
+  #mcp-integration .mcp-showcase-item {
+    min-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  #mcp-integration .image-container {
+    height: 250px;
+  }
+
+  #mcp-integration .mcp-showcase-image {
+    max-height: 230px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -32100,13 +32113,118 @@ footer a:hover {
   text-align: center;
 }
 
-/* MCP Integration Styles */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.menu-icon {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: background-color 0.3s;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: transform 0.3s;
+}
+
+.menu-icon::before {
+  top: -6px;
+}
+
+.menu-icon::after {
+  bottom: -6px;
+}
+
+.mobile-menu-button.active .menu-icon {
+  background-color: transparent;
+}
+
+.mobile-menu-button.active .menu-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.mobile-menu-button.active .menu-icon::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  nav .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .nav-links a.btn {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.5rem 0;
+    margin-top: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    text-align: center;
+    padding: 0.7rem;
+    width: 100%;
+  }
+
+  .nav-links a.btn {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
 
 #mcp-integration .mcp-showcase-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 2rem;
   margin: 2rem 0;
 }
 
@@ -32114,27 +32232,66 @@ footer a:hover {
   flex: 1;
   min-width: 300px;
   max-width: 500px;
-  text-align: center;
-}
-
-#mcp-integration .showcase-image {
-  width: 100%;
-  height: auto;
+  height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+#mcp-integration .mcp-showcase-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
   transition: transform 0.3s ease;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
-#mcp-integration .showcase-image:hover {
-  transform: scale(1.02);
+#mcp-integration .mcp-showcase-item:hover::after {
+  transform: scaleX(1);
 }
 
-#mcp-integration .caption {
-  margin-top: 0.75rem;
-  font-style: italic;
-  color: var(--text-secondary);
+#mcp-integration .mcp-showcase-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#mcp-integration .image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background-color: var(--code-bg);
+  border-radius: 8px 8px 0 0;
+  padding: 10px;
+}
+
+#mcp-integration .mcp-showcase-image {
+  max-width: 100%;
+  max-height: 280px;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#mcp-integration .image-caption {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+  padding: 0.75rem;
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  flex-grow: 1;
 }
 
 #mcp-integration .benefits-grid {
@@ -32248,8 +32405,6 @@ footer a:hover {
   line-height: 1.6;
 }
 
-/* HTTP API Server Section Styles */
-
 #integrations .note {
   background-color: var(--note-bg-color);
   border-left: 4px solid var(--accent-color);
@@ -32257,8 +32412,6 @@ footer a:hover {
   margin: 1.5rem 0;
   border-radius: 0 5px 5px 0;
 }
-
-/* Advanced Configuration Section */
 
 #mcp-integration .advanced-configuration {
   margin-top: 2.5rem;
@@ -32272,8 +32425,6 @@ footer a:hover {
   color: var(--accent-color);
   margin-bottom: 1rem;
 }
-
-/* Discord Banner Styles */
 
 .discord-banner {
   background-color: #5865F2;
@@ -32321,8 +32472,6 @@ footer a:hover {
   }
 }
 
-/* Pro Tip styles */
-
 .pro-tip {
   background-color: var(--note-bg-color);
   border-left: 4px solid var(--accent-color);
@@ -32338,32 +32487,88 @@ footer a:hover {
   font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-  .slider-container,
-  .video-showcase {
-    padding: 1rem;
+.image-fullscreen-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  animation: zoom 0.3s ease;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+@keyframes zoom {
+  from {
+    transform: translateY(-50%) scale(0.1);
   }
 
-  #sliderImage {
-    max-height: 400px;
+  to {
+    transform: translateY(-50%) scale(1);
   }
+}
 
-  .slider-controls {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: var(--text-color);
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 10000;
+}
 
-  .slider-controls .btn {
-    width: 100%;
-  }
+.close-modal:hover,
+.close-modal:focus {
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
+}
 
-  #mcp-integration .mcp-showcase-item {
-    min-width: 100%;
-  }
+#modal-caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: var(--text-color);
+  padding: 10px 0;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
 
-  #mcp-integration .benefits-grid {
-    grid-template-columns: 1fr;
-  }
+img.clickable-image {
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+img.clickable-image:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
 }
 
 @media (min-width: 640px) {
